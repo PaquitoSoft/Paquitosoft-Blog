@@ -2,12 +2,12 @@ Paquitosoft Blog
 ================
 
 This is the blog system I'm developing for my own website.
-It's developed usgin several Node frameworks.
+It's developed usgin several Node libraries.
 
-Tools
------
+Libraries
+---------
 
-These are the awesome tools I'm using:
+These are the awesome libraries I'm using:
 
 * [Express](https://github.com/visionmedia/express) -- Sinatra inspired web development framework for node.js
 * [Mongoose](https://github.com/LearnBoost/mongoose) -- MongoDB utility library with ORM-like functionality 
@@ -23,5 +23,10 @@ using this amazing framework (based on [Connect](https://github.com/senchalabs/c
 
 Beyond the ones provided by Express, these are the ones I'm using:
 
-* [connect-gzip]()
-* [connect-assetmanager]()
+* [connect-gzip](https://github.com/nateps/connect-gzip) -- Gzip middleware for node.js Connect and Express
+* [connect-assetmanager](https://github.com/mape/connect-assetmanager) -- Middleware for Connect (node.js) for handling your static assets
+
+Tools
+-----
+
+* [nodemon](https://github.com/remy/nodemon) -- Monitor for any changes in your node.js application and automatically restart the server - perfect for development 
