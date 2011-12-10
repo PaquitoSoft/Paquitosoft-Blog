@@ -1,0 +1,14 @@
+{
+    "name": "paquitosoft-blog"
+  , "version": "0.0.1"
+  , "private": true
+  , "dependencies": {
+      "express": "2.5.1"
+    , "jade": "0.19.0"
+    , "mongoose": "2.4.1"
+    , "loggly": "0.3.10"
+    , "gravatar": "1.0.3"
+    , "connect-gzip": "0.1.5"
+    , "connect-assetmanager": "0.0.24"
+  }
+}

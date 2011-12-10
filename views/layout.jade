@@ -1,0 +1,89 @@
+!!!
+html
+	head
+		title= title
+		meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+		link(rel='shortcut icon', href='favicon.ico')
+
+		// Load main styles
+		//link(rel='stylesheet', href='/stylesheets/site.css', type='text/css')
+
+		// Load fonts
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic', type='text/css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold', type='text/css')
+
+		// Load jQuery library
+		//script(type='text/javascript', src='/scripts/jquery-1.6.2.min.js')
+
+		// Load custom js
+		//script(type='text/javascript', src='/scripts/panelslide.js')
+		//script(type='text/javascript', src='/scripts/custom.js')
+
+		// Load topcontrol js
+		//script(type='text/javascript', src='/scripts/scrolltopcontrol.js')
+
+		// Load NIVO Slider		
+		//link(rel='stylesheet', href='/stylesheets/nivo-slider.css', type='text/css', media='screen')
+		//link(rel='stylesheet', href='/stylesheets/nivo-theme.css', type='text/css', media='screen')	
+		//script(type='text/javascript', src='/scripts/jquery.nivo.slider.pack.js')
+		//script(type='text/javascript', src='/scripts/nivo-options.js')
+
+		// Load fancybox
+		//script(type='text/javascript', src='/scripts/jquery.fancybox-1.3.4.pack.js')
+		//script(type='text/javascript', src='/scripts/jquery.easing-1.3.pack.js')
+		//script(type='text/javascript', src='/scripts/jquery.mousewheel-3.0.4.pack.js')
+		//link(rel='stylesheet', href='/stylesheets/jquery.fancybox-1.3.4.css', type="text/css', media='screen')
+
+		// Compressed styles
+		link(rel='stylesheet', href='/stylesheets/styles.css', type="text/css', media='screen')
+		
+		// Compressed JS
+		script(type='text/javascript', src='/scripts/app.js')
+
+	body
+
+		// This is the START of the header
+		div#header-wrapper
+			div#header
+				div#logo
+					a(href='/')
+						img(src='/images/logo.png', width='100', height='80', alt='logo')
+				div#header-text
+					h4 I want to be a ninja!
+					h6 
+						a(href='/') Home
+		// END of header
+
+		// This is the START of the menu
+		div#menu-wrapper
+			div#main-menu
+				ul
+					li: a(href='/', class=(menu == 'home') ? 'selected' : '') Home
+					li: a(href='/blog', class=(menu == 'blog') ? 'selected' : '') Blog
+					li: a(href='/projects', class=(menu == 'projects') ? 'selected' : '') Projects
+					li: a(href='/about', class=(menu == 'about') ? 'selected' : '') About
+					li: a(href='/contact', class=(menu == 'contact') ? 'selected' : '') Contact
+
+			// This is the START of the footer
+			div#footer
+				div#social-box
+					ul
+						li
+							div.facebook: a(href='#')
+						li
+							div.twitter: a(href='#')
+						li
+							div.rss: a(href='#')
+				h6 Copyright © 2011 - effe
+				// END of footer 
+
+			// END of menu
+
+		// This is the START of the content
+		//- Here is where we include dinamic content
+		div#content!= body
+
+		p.slide
+			a.btn-slide(href='#')
+
+		div#topcontrol

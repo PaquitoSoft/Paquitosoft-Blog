@@ -1,0 +1,29 @@
+#contact
+	h5(style='margin-top: 10px;') Contact us
+	p 
+		If you would like to contact us use this form, and we will get back to you shortly!
+		
+	form#contactform(name='contact', action='/contact', method='post')
+		div.boxes
+			h6
+				name
+					span.required *
+			div.box
+				input#sender_name.input(type='text', name='name')
+			h6
+				email
+					span.required *
+			div.box
+				input#sender_email.input(type='text', name='email')
+			h6
+				message
+					span.required *
+			div.msgbox
+				textarea#cf_message.message(name='cf_message', rows='50', cols='30')
+			div.submitbtn
+				input.button.btncolor(type='submit', value='Send Message')
+
+#contactinfo
+	div.google: a(href='#') Google +
+	div.twitter_small: a(href='#') Follow me on Twitter
+	div.facebook_small: a(href='#') Follow me on Facebook

@@ -1,0 +1,67 @@
+// This is the START of the blog section
+div#blog
+	div.blog-item-single
+		h3 This is our fancy juicy tidbit
+		div.blog-item-single-info
+			div.user admin
+			div.comments 6 comments
+			div.tags psd news blog post
+		div.blog-item-single-content
+			a.single_image(href='/images/blog/large/blog1.jpg')
+				img(src='/images/blog/single/blog1.jpg', width='720', height='280', alt='blog1')				
+			p
+				Aenean porttitor sem est. Donec at risus lacus. Sed id ligula ipsum, non placerat turpis. Donec interdum egestas ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper sagittis faucibus. Pellentesque convallis erat in leo pellentesque dapibus. Suspendisse non dui dolor, at tempor est. Phasellus adipiscing nisi sed ante consequat posuere. Etiam mollis, est eu vestibulum eleifend, dolor risus egestas tortor, vestibulum fringilla urna libero eget est. Sed a erat justo, eu suscipit nunc. In faucibus adipiscing quam, id gravida libero fringilla in. Cras consectetur porttitor lorem, sed egestas elit laoreet ac. Proin at sapien at velit scelerisque auctor quis eget purus. Cras nec arcu eleifend quam condimentum feugiat.
+			p
+				Fusce quis nibh eu erat pellentesque eleifend. Nunc tempus iaculis interdum. Aenean felis nisi, tempus ullamcorper ullamcorper sit amet, sodales eu nibh. Curabitur porta porta egestas. Nulla porta diam at augue facilisis ultricies posuere felis ultrices. Phasellus bibendum, orci facilisis ultrices scelerisque, risus arcu tristique turpis, sit amet viverra neque velit eu ligula. Aliquam erat volutpat. Phasellus in vulputate urna. Vestibulum est erat, pretium ac suscipit et, blandit id enim. Pellentesque hendrerit suscipit tortor, vel euismod elit euismod at. Mauris arcu dolor, rutrum ac convallis eget, porta ac quam. Maecenas id sem urna. Nunc dignissim est non libero vehicula vel faucibus tellus congue.
+		
+		div.social-blog-buttons
+			a.twitter-share-button(href='http://twitter.com/share', data-count='horizontal', data-via='92_Five') Tweet
+			script(type='text/javascript', src='http://platform.twitter.com/widgets.js')
+			iframe(src="http://www.facebook.com/plugins/like.php?app_id=108550772584353&amp;href=http%3A%2F%2Fwww.92five.net&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21", scrolling="no", frameborder="0", style="border:none; overflow:hidden; width:450px; height:21px;")
+		
+		div.comments-block
+			h3.comments-title Comments (2)	
+			div.spacer
+			div.comment
+				//- TODO USE GRAVATAR node module (already in my dependencies!)
+				img.avatar(alt="", src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm", width="50", height="35")
+				div.comment-info
+					a.post-author(href='#') John Doe
+					p January 21, 2011
+				div.comment-body
+					p 
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in vestibulum eros. Praesent at cursus orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae sagittis dolor. Proin iaculis suscipit quam non suscipit. Vestibulum vestibulum semper tortor...
+					a.reply(href='#') Reply
+			div.spacer
+			div.comment
+				img.avatar(alt="", src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm", width="50", height="35")
+				div.comment-info
+					a.post-author(href='#') John Doe
+					p January 21, 2011
+				div.comment-body
+					p 
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in vestibulum eros. Praesent at cursus orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae sagittis dolor. Proin iaculis suscipit quam non suscipit. Vestibulum vestibulum semper tortor...
+					a.reply(href='#') Reply
+			div.spacer
+		
+		div.response
+			h3 Leave a comment
+			h6.required-comment * required
+			div#comment-form.form
+				form(action='/post/1/comment', method='post')
+					input(type='hidden', name='_csrf', value='#{csrf_token}')
+					div.input-block
+						h6.short-label Name*
+						input#name.short-field(type='text', name='name', value='')
+					div.input-block
+						h6.short-label Email*
+						input#email.short-field(type='text', name='email', value='')
+					div.input-block-long
+						h6.short-label Web
+						input#url.long-field(type='text', placeholder='http://', name='url', value='')
+					div.textarea-block
+						h6 Comment*
+						textarea#comment(name='comment', rows='10', cols='70')
+					div.clear
+						input#comment-button(type='submit', name='submit', value='Submit')
+			div.spacer
