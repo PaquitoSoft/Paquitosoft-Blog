@@ -110,6 +110,7 @@ mongoose.connection.on('error', function(err) {
 
 // Kickstart!
 app.listen(EXPRESS_PORT, function() {
+	logger.debug("Listening port: " + EXPRESS_PORT);
 	logger.debug("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 	logger.debug("Version de Express: " + express.version);
 	logger.info("Server up and running!");
