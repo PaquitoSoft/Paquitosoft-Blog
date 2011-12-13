@@ -992,6 +992,10 @@ Contact CSS
 	color: #848484;
 	float: left;
 }
+#contactform .inputLabel {
+	position: relative;
+	top: 6px;
+}
 #contactform .boxes {
 	float: left;
 	display: block;
