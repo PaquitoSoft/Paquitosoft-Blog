@@ -1,23 +1,18 @@
 // This is the START of the recent posts
+
 div#recent-posts-container
 	div.section-description
 		h5 Recent posts
 		p Here you can find some of our recent and fresh content...
 	div.recent-summary
-		div.recent-item
-			a(href='/post/2')
-				img(src='/images/blog/thumbs/recent1.jpg', width='250', height='150', alt='recent1')
-			h6 NYC
-			p 
-				On a scooter? 
-					a.readmore(href='/post/1') read more →
-		div.recent-item-last
-			a(href='/post/2')
-				img(src='/images/blog/thumbs/recent2.jpg', width='250', height='150', alt='recent2')
-			h6 Feathers
-			p 
-				Could drop some lorem here.
-					a.readmore(href='post/2') read more →
+		each post, index in recentPosts
+			div(class=(index == 0 ? 'recent-item' : 'recent-item-last'))
+				a(href='/post/#{post.identifier}')
+					img(src='/images/blog/thumbs/blog#{post.identifier}.jpg', width='250', height='150', alt='#{post.title}')
+				h6 #{post.title}
+				p #{post.postedAt.toDateString()}
+						a.readmore(href='/post/#{post.identifier}') read more →
+			
 	// END of recent posts
 
 	// This is the START of the recent projects

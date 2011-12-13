@@ -1,0 +1,12 @@
+//- Display one of the brief descriptions of a resource (post or project) in the home page
+//- There are two parameters required:
+//- 	+ resource: Post or Project instance
+//-		+ resourceImg: Path to the image of the resorce briefed
+//-		+ resourceUrl: Url to the full resource
+
+div.recent-item
+	a(href='#{resourceUrl}')
+		img(src='#{resourceImg}', width='250', height='150')
+	h6 #{resource.title}
+	p 
+		a.readmore(href='#{resourceUrl}') read more →

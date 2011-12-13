@@ -10,7 +10,10 @@ var express = require('express'),
 	sys = require('sys'),
 	auth = require('./lib/auth.js'),
 	connect_gzip = require('connect-gzip'),
-	assetManager = require('connect-assetmanager');
+	assetsManager = require('connect-assetmanager'),
+	assetsConfig = require('./lib/assets.js').assetsConfig,
+	templateData = require('./template-data.js'),
+	markdown = require("node-markdown").Markdown;
 
 // Environment settings
 var EXPRESS_PORT = process.env.PORT || 4000;
@@ -19,37 +22,6 @@ var SESSION_SECRET_HASH = process.env.PS_BLOG_SESSION_SECRET_HASH || 'FSD423HIHF
 
 // Create Express server
 var app = module.exports = express.createServer();
-
-// Configure minified assets
-var assets = assetManager({
-	js: {
-		route: /\/app.js/,
-		path: './public/scripts/',
-		dataType: 'javascript',
-		files: [
-			'jquery-1.6.2.min.js',
-			'jquery.mousewheel-3.0.4.pack.js',
-			'jquery.nivo.slider.pack.js',
-			'nivo-options.js',
-			'panelslide.js',
-			'custom.js',
-			'scrolltopcontrol.js',
-			'jquery.fancybox-1.3.4.pack.js',
-			'jquery.easing-1.3.pack.js'
-		]
-	},
-	css: {
-		route: /\/styles.css/,
-		path: './public/stylesheets/',
-		dataType: 'css',
-		files: [
-			'site.css',
-			'nivo-slider.css',
-			'nivo-theme.css',
-			'jquery.fancybox-1.3.4.css'
-		]
-	}
-});
 
 
 /* ===== START: Express configuration ===== */
@@ -70,7 +42,7 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));  
   app.use(express.logger('dev'));  
   app.use(express.csrf());
-  app.use(assets);
+  app.use(assetsManager(assetsConfig));
 });
 
 // Development
@@ -84,11 +56,20 @@ app.configure('production', function(){
 });
 
 
-// This is the way we can register more common local variables 
+// This is the way we can register more common variables 
 // for the template engine using request and response objects
 app.dynamicHelpers({
     csrf_token: function(req, res) {
         return req.session._csrf;
+    }
+});
+
+// This is the way we can register more common functions 
+// available in every view template
+app.helpers({
+	formatMdText: function(text) {
+    	logger.debug("App::dynamicHelpers-formatMdText# Texto a parsear: " + sys.inspect(text));
+    	return markdown(text, true); // Allow only a default set of HTML tags (http://github.com/andris9/node-markdown/blob/master/lib/markdown.js#L38)
     }
 });
 
@@ -100,7 +81,12 @@ controllers.initialize(app);
 
 /* ===== START: Mongoose connection events ===== */
 mongoose.connection.on('open', function() {
-	logger.debug("Connected to MongoDB");	
+	logger.debug("Connected to MongoDB");
+	models.User.count({}, function(err, result) {
+		if (result < 1) {
+			templateData.initializeDatabase(models);
+		}
+	});
 });
 
 mongoose.connection.on('error', function(err) {
