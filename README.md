@@ -14,6 +14,7 @@ These are the awesome libraries I'm using:
 * [Jade](https://github.com/visionmedia/jade) -- Robust, elegant, feature rich template engine for nodejs
 * [Loggly](https://github.com/nodejitsu/node-loggly) -- A client implementation for Loggly (cloud logging) in node.js
 * [gravatar](https://github.com/emerleite/node-gravatar) -- Node.JS library to generate gravatar URLs
+* [node-markdown](https://github.com/andris9/node-markdown) -- Parse Markdown syntax with Node.JS
 
 Express modules
 ---------------
