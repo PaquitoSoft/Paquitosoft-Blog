@@ -80,7 +80,7 @@ p {
 	font-family: Verdana, Arial, sans-serif;
 	line-height: 1.6em;
 	color: #848484;
-	font-size: 8pt;
+	font-size: 9pt;
 }
 h1 {
 	font-family: 'Droid Serif', Verdana, Arial, sans-serif;
@@ -608,6 +608,10 @@ Home Page CSS
 	float: right;
 	padding-right: 170px;
 }
+div.section-description p,
+div.recent-item p {
+	font-size: 8pt !important;
+}
 /******************************************************************
 About us CSS
 ******************************************************************/
@@ -720,10 +724,12 @@ This CSS is for the project page
 #description {
 	padding-bottom: 20px;
 	float: left;
-	width: 480px;
+/*	width: 480px;*/
+	width: 430px;
 }
 #work {
 	margin-top: 15px;
+	margin-bottom: 15px;
 	border-left: 1px;
 	border-style: solid;
 	border-color: #c9c9c9;

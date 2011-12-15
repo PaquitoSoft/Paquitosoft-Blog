@@ -3,54 +3,14 @@ div#filter
 img.star-divider
 div#container
 	ul#stage
-		li(data-tags='Desktop')
-			a(href='/project/1')
-				img(src='/images/portfolio/thumbs/image(1).jpg', alt='Illustration')
-			h6 Paquitometer
-			p Network traffic monitor
-				a.readmore(href='/project/1') view →
-		li(data-tags='Desktop')
-			a(href='/project/1')
-				img(src='/images/portfolio/thumbs/image(2).jpg', alt='Illustration')
-			h6 Namtia
-			p Music application
-				a.readmore(href='/project/1') view →
-		li(data-tags='Development')
-			a(href='/project/1')
-				img(src='/images/portfolio/thumbs/image(3).jpg', alt='Illustration')
-			h6 LML
-			p Annotated model layer abstraction
-				a.readmore(href='/project/1') view →
-		li(data-tags='Desktop')
-			a(href='/project/1')
-				img(src='/images/portfolio/thumbs/image(4).jpg', alt='Illustration')
-			h6 Zipper
-			p iPod explorer
-				a.readmore(href='/project/1') view →
-		li(data-tags='Web')
-			a(href='/project/1')
-				img(src='/images/portfolio/thumbs/image(5).jpg', alt='Illustration')
-			h6 Notimoo
-			p Web Growl style notifications
-				a.readmore(href='/project/1') view →
-		li(data-tags='Web')
-			a(href='/project/1')
-				img(src='/images/portfolio/thumbs/image(6).jpg', alt='Illustration')
-			h6 Notiquery
-			p Web Growl style notifications
-				a.readmore(href='/project/1') view →
-		li(data-tags='Development')
-			a(href='/project/1')
-				img(src='/images/portfolio/thumbs/image(7).jpg', alt='Illustration')
-			h6 Moo printing
-			p Kinda sweet huh?
-				a.readmore(href='/project/1') view →
-		li(data-tags='Development')
-			a(href='/project/1')
-				img(src='/images/portfolio/thumbs/image(8).jpg', alt='Illustration')
-			h6 Just say it!
-			p Kinda sweet huh?
-				a.readmore(href='/project/1') view →
-
+		each project in projects
+			li(data-tags='#{project.category}')
+				a(href='/project/#{project.id}')
+					img(src='/images/portfolio/thumbs/#{project.imageName}', alt='#{project.name}')
+				h6 #{project.name}
+					a.readmore(href='/project/#{project.id}') view →
+				p #{project.title}
+					
+	
 // Load quicksand
 script(type='text/javascript', src='/scripts/jquery.quicksand.js')

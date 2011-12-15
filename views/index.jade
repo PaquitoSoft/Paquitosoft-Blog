@@ -7,11 +7,11 @@ div#recent-posts-container
 	div.recent-summary
 		each post, index in recentPosts
 			div(class=(index == 0 ? 'recent-item' : 'recent-item-last'))
-				a(href='/post/#{post.identifier}')
-					img(src='/images/blog/thumbs/blog#{post.identifier}.jpg', width='250', height='150', alt='#{post.title}')
+				a(href='/post/#{post.id}')
+					img(src='/images/blog/thumbs/#{post.imageName}', width='250', height='150', alt='#{post.title}')
 				h6 #{post.title}
 				p #{post.postedAt.toDateString()}
-						a.readmore(href='/post/#{post.identifier}') read more →
+						a.readmore(href='/post/#{post.id}') read more →
 			
 	// END of recent posts
 
@@ -21,20 +21,13 @@ div#recent-posts-container
 			h5 Recent projects
 			p These are some of our latest projects, come nice stuff here...
 		div.recent-summary
-			div.recent-item
-				a.single_image(href='#')
-					img(src='/images/portfolio/thumbs/recent1.jpg', width='250', height='150', alt='recent1')
-				h6 Moo Minicards
-				p 
-					Kinda sweet huh? 
-						a.readmore(href='#') read more →
-			div.recent-item-last
-				a.single_image(href='#')
-					img(src='/images/portfolio/thumbs/recent2.jpg', width='250', height='150', alt='recent2')
-				h6 Right off the press! 
-				p 
-					Could drop some lorem here.
-						a.readmore(href='#') read more →
+			each project, index in recentProjects
+				div(class=(index == 0 ? 'recent-item' : 'recent-item-last'))
+					a(href='/project/#{project.id}')
+						img(src='/images/portfolio/thumbs/#{project.imageName}', width='250', height='150', alt='#{project.name}')
+					h6 #{project.name}
+					p #{project.title}
+							a.readmore(href='/project/#{project.id}') read more →
 		// END of recent projects
 		div.spacer
 		// END of content
