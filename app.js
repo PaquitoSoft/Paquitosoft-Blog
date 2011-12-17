@@ -13,7 +13,8 @@ var express = require('express'),
 	assetsManager = require('connect-assetmanager'),
 	assetsConfig = require('./lib/assets.js').assetsConfig,
 	templateData = require('./template-data.js'),
-	markdown = require("node-markdown").Markdown;
+	markdown = require("node-markdown").Markdown,
+	gravatar = require('gravatar');
 
 // Environment settings
 var EXPRESS_PORT = process.env.PORT || 4000;
@@ -70,6 +71,11 @@ app.helpers({
 	formatMdText: function(text) {
     	logger.debug("App::dynamicHelpers-formatMdText# Texto a parsear: " + sys.inspect(text));
     	return markdown(text, true); // Allow only a default set of HTML tags (http://github.com/andris9/node-markdown/blob/master/lib/markdown.js#L38)
+    },
+    gravatarUrl: function(email) {
+    	logger.debug("App::Helpers::gravatarUrl# Email del usuario para Gravatar: " + email);
+    	logger.debug("App::Helpers::gravatarUrl# Url de la imagen gravatar para el email proporcionado: " + gravatar.url(email));
+    	return gravatar.url(email);
     }
 });
 
@@ -91,6 +97,8 @@ mongoose.connection.on('open', function() {
 
 mongoose.connection.on('error', function(err) {
     logger.error('ERROR trying to connect to MongoDB from Express application.', err);
+    console.log('ERROR trying to connect to MongoDB from Express application.', err);
+    process.exit(23);
 });
 /* END: Mongoose connection events */
 

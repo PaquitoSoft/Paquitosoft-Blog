@@ -14,7 +14,8 @@ var posts = [{
     			"hanging around in the internet, but suddenly, there was a boom called **Node.js**.",
     author: "paquitosoftware@gmail.com",
     comments: [{
-    	author: "John Doe",
+    	authorEmail: "paquitosoftware@gmail.com",
+    	authorName: "John Doe",
 	    postedAt: new Date(),
     	content: "Man, I think you should go to a shrink."
     }],
