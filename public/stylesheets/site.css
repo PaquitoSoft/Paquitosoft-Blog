@@ -827,7 +827,8 @@ Blog CSS
 	background-image: url(../images/comments.png);
 	background-position: 0 1px;
 	padding-bottom: 1px;
-	margin-right: 15px;
+	margin-right: 10px;
+	margin-left: 10px;
 	display: inline;
 	text-decoration: none;
 	font-size: 12px;
@@ -970,6 +971,12 @@ Blog CSS
 	height: 30px;
 	padding: 5px;
 }
+#comment-button:hover {
+	background-color: #000;
+	color: #FFF;
+	cursor: pointer;
+}
+
 /***************************************************
 Contact CSS
 ***************************************************/

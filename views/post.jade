@@ -1,7 +1,7 @@
 // This is the START of the blog section
 div#blog
 	div.blog-item-single
-		h3 This is our fancy juicy tidbit
+		h3 #{post.title}
 		div.blog-item-single-info
 			div.user #{post.author}
 				div.comments #{post.comments.length} comment#{post.comments.length != 1 ? 's' : ''}
@@ -34,7 +34,7 @@ div#blog
 			h3 Leave a comment
 			h6.required-comment * required
 			div#comment-form.form
-				form(action='/post/1/comment', method='post')
+				form(action='/post/#{post.id}/comment', method='post')
 					input(type='hidden', name='_csrf', value='#{csrf_token}')
 					div.input-block
 						h6.short-label Name*
@@ -49,5 +49,5 @@ div#blog
 						h6 Comment*
 						textarea#comment(name='comment', rows='10', cols='70')
 					div.clear
-						input#comment-button(type='submit', name='submit', value='Submit')
+						input#comment-button.button(type='submit', name='submit', value='Submit')
 			div.spacer

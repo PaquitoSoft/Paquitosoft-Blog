@@ -9,6 +9,7 @@ var express = require('express'),
 	controllers = require('./lib/controllers'),
 	sys = require('sys'),
 	auth = require('./lib/auth.js'),
+	formValidation = require('./lib/form-validation.js'),
 	connect_gzip = require('connect-gzip'),
 	assetsManager = require('connect-assetmanager'),
 	assetsConfig = require('./lib/assets.js').assetsConfig,
@@ -39,11 +40,12 @@ app.configure(function(){
   app.use(express.session({secret: SESSION_SECRET_HASH}));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(express.logger('dev'));
+  app.use(express.csrf());
+  app.use(formValidation());
+  app.use(assetsManager(assetsConfig));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));  
-  app.use(express.logger('dev'));  
-  app.use(express.csrf());
-  app.use(assetsManager(assetsConfig));
 });
 
 // Development
@@ -69,12 +71,9 @@ app.dynamicHelpers({
 // available in every view template
 app.helpers({
 	formatMdText: function(text) {
-    	logger.debug("App::dynamicHelpers-formatMdText# Texto a parsear: " + sys.inspect(text));
     	return markdown(text, true); // Allow only a default set of HTML tags (http://github.com/andris9/node-markdown/blob/master/lib/markdown.js#L38)
     },
     gravatarUrl: function(email) {
-    	logger.debug("App::Helpers::gravatarUrl# Email del usuario para Gravatar: " + email);
-    	logger.debug("App::Helpers::gravatarUrl# Url de la imagen gravatar para el email proporcionado: " + gravatar.url(email));
     	return gravatar.url(email);
     }
 });

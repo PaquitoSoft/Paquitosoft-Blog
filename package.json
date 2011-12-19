@@ -11,5 +11,6 @@
     , "connect-gzip": "0.1.5"
     , "connect-assetmanager": "0.0.24"
     , "node-markdown": "0.1.0"
+    , "validator": "0.3.7"
   }
 }
