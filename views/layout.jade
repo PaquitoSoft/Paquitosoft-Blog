@@ -88,3 +88,12 @@ html
 				a.btn-slide(href='#')
 
 		div#topcontrol
+
+
+		div#validation-messages
+			ul
+				each vm in validationErrors
+					li.error 
+						span.key #{vm.formField}
+						span.msg #{vm.error}
+		

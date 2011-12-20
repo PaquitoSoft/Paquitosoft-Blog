@@ -131,4 +131,10 @@ function createList(text,items){
 	// Ad a visual mark to main menu selected item
 	$('#main-menu ul li a.selected').append(' →');
 	
+	// Form validation highlighting
+	var invalidEl;
+	$('div#validation-messages li.error').each(function(index, el) {
+		invalidEl = invalidEl || $(el);
+		$('*[name=' + $(el).find('span.key').text() + ']').css('border', '2px solid red');
+	});
  });
