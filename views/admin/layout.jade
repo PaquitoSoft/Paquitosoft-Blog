@@ -1,0 +1,79 @@
+!!!
+html
+	head
+		title= title
+		meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+		//- link(rel='shortcut icon', href='/favicon.ico')
+
+		// Load main styles
+		//link(rel='stylesheet', href='/stylesheets/site.css', type='text/css')
+
+		// Load fonts
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic', type='text/css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold', type='text/css')
+
+		// Load jQuery library
+		//script(type='text/javascript', src='/scripts/jquery-1.6.2.min.js')
+
+		// Compressed styles
+		link(rel='stylesheet', href='/stylesheets/styles.css', type="text/css', media='screen')
+		
+		// Compressed JS
+		script(type='text/javascript', src='/scripts/app.js')
+
+	body
+
+		// This is the START of the header
+		div#header-wrapper
+			div#header
+				div#logo
+					a(href='/')
+						img(src='/images/logo.png', width='100', height='80', alt='logo')
+				div#header-text
+					h4 I want to be a ninja!
+					h6 
+						a(href='/') Home
+		// END of header
+
+		// This is the START of the menu
+		div#menu-wrapper
+			div#main-menu
+				ul
+					li: a(href='/admin', class=(menu == 'home') ? 'selected' : '') Dashboard
+					li: a(href='/admin/posts', class=(menu == 'blog') ? 'selected' : '') Posts
+					li: a(href='/admin/projects', class=(menu == 'projects') ? 'selected' : '') Projects
+					li: a(href='/admin/users', class=(menu == 'about') ? 'selected' : '') Users
+
+			// This is the START of the footer
+			div#footer
+				div#social-box
+					ul
+						li
+							div.facebook: a(href='#')
+						li
+							div.twitter: a(href='#')
+						li
+							div.rss: a(href='#')
+				h6 Copyright © 2011 - effe
+				// END of footer 
+
+			// END of menu
+
+		// This is the START of the content
+		//- Here is where we include dinamic content
+		div#content!= body
+
+		//
+			p.slide
+				a.btn-slide(href='#')
+
+		div#topcontrol
+
+
+		div#validation-messages
+			ul
+				each vm in validationErrors
+					li.error 
+						span.key #{vm.formField}
+						span.msg #{vm.error}
+		

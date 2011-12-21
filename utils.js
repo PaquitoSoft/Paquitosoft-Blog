@@ -24,3 +24,5 @@ exports.normalizePath = function(path) {
     .replace(/\*/g, '(.+)');
   return new RegExp('^' + path + '$', 'i');
 }
+
+exports.staticContentRegExp = new RegExp("([^/]+).(jpg|bmp|jpeg|gif|png|tif|css|js|ico)", "i");

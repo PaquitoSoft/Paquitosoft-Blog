@@ -42,7 +42,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.logger('dev'));
   app.use(express.csrf());
-  app.use(formValidation());
+  app.use(formValidation(app));
   app.use(assetsManager(assetsConfig));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));  
@@ -56,6 +56,7 @@ app.configure('development', function(){
 // Production
 app.configure('production', function(){
   app.use(express.errorHandler()); 
+//  logger.setLevel(2);
 });
 
 

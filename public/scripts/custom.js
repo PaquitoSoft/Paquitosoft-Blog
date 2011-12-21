@@ -134,7 +134,12 @@ function createList(text,items){
 	// Form validation highlighting
 	var invalidEl;
 	$('div#validation-messages li.error').each(function(index, el) {
-		invalidEl = invalidEl || $(el);
-		$('*[name=' + $(el).find('span.key').text() + ']').css('border', '2px solid red');
+		var inputEl = $('*[name=' + $(el).find('span.key').text() + ']');
+		invalidEl = invalidEl || inputEl;
+		inputEl.css('border', '2px solid red');
 	});
+	console.log("Invalid form element: " + invalidEl);
+	console.dir(invalidEl);
+	if (invalidEl) $.scrollTo(invalidEl);
+	
  });
