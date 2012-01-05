@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -35,11 +34,12 @@ app.configure(function(){
   app.use(connect_gzip.gzip());
   app.use(express.responseTime());
   //app.use(express.profiler());
-  app.use(auth());
+//  app.use(auth(app));
   app.use(express.cookieParser());
   app.use(express.session({secret: SESSION_SECRET_HASH}));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(auth(app));
   app.use(express.logger('dev'));
   app.use(express.csrf());
   app.use(formValidation(app));
